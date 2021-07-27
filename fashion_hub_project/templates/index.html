@@ -63,7 +63,7 @@ if(typeof _bsa !== 'undefined' && _bsa) {
 })();
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-149859901-1'></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -226,7 +226,7 @@ RIGHT SIDEBAR TOGGLE SECTION
 }
 </style>
 <div class="pull-right toggle-right-sidebar">
-<!-- <span class="fa title-open-right-sidebar tooltipstered fa-angle-double-right"></span> -->
+{% comment %} <span class="fa title-open-right-sidebar tooltipstered fa-angle-double-right"></span> {% endcomment %}
 </div>
 
 <div id="right-sidebar" class="right-sidebar-notifcations nav-collapse">
@@ -293,41 +293,15 @@ RIGHT SIDEBAR TOGGLE SECTION
                 <!-- //logo -->
                 <div class="w3ls_right_nav ml-auto d-flex">
                     <!-- search form -->
-                    <form class="nav-search form-inline my-0 form-control" action="#" method="post">
-                        <select class="form-control input-lg" name="category">
-                            <option value="all">Search our store</option>
-                            <optgroup label="Mens">
-                                <option value="T-Shirts">T-Shirts</option>
-                                <option value="coats-jackets">Coats & Jackets</option>
-                                <option value="Shirts">Shirts</option>
-                                <option value="Suits & Blazers">Suits & Blazers</option>
-                                <option value="Jackets">Jackets</option>
-                                <option value="Sweat Shirts">Trousers</option>
-                            </optgroup>
-                            <optgroup label="Womens">
-                                <option value="Dresses">Dresses</option>
-                                <option value="T-shirts">T-shirts</option>
-                                <option value="skirts">Skirts</option>
-                                <option value="jeans">Jeans</option>
-                                <option value="Tunics">Tunics</option>
-                            </optgroup>
-                            <optgroup label="Girls">
-                                <option value="Dresses">Dresses</option>
-                                <option value="T-shirts">T-shirts</option>
-                                <option value="skirts">Skirts</option>
-                                <option value="jeans">Jeans</option>
-                                <option value="Tops">Tops</option>
-                            </optgroup>
-                            <optgroup label="Boys">
-                                <option value="T-Shirts">T-Shirts</option>
-                                <option value="coats-jackets">Coats & Jackets</option>
-                                <option value="Shirts">Shirts</option>
-                                <option value="Suits & Blazers">Suits & Blazers</option>
-                                <option value="Jackets">Jackets</option>
-                                <option value="Sweat Shirts">Sweat Shirts</option>
-                            </optgroup>
-                        </select>
-                        <input class="btn btn-outline-secondary  ml-3 my-sm-0" type="submit" value="Search">
+                    <form class="nav-search form-inline my-0 form-control" action="{% url 'fashion_hub_app:search' %}" method="get">
+                    {% csrf_token %}
+                        <div class="input-group rounded">
+                            <input type="search" class="form-control rounded" placeholder="Search Items" name="q" aria-label="Search"
+                                aria-describedby="search-addon" />
+                            <span class="input-group-text border-0" id="search-addon">
+                                <button><i class="fas fa-search"></i></button>
+                            </span>
+                        </div>   
                     </form>
                     <!-- search form -->
                     <div class="nav-icon d-flex">
@@ -371,30 +345,31 @@ RIGHT SIDEBAR TOGGLE SECTION
                             <div class="dropdown-menu" style="width:100%">
                                 <div class="px-0 container">
                                     <div class="row">
+                                        {% comment %} <div class="col-md-4">
+                                            <a class="dropdown-item" href="men.html">T-Shirts</a>
+                                            {% comment %} <a class="dropdown-item" href="men.html">Coats</a> {% endcomment %}
+                                            {% comment %} <a class="dropdown-item" href="{% url 'fashion_hub_app:shirts' %}">Shirts</a>
+                                            <a class="dropdown-item" href="men.html">Suits & Blazers</a>
+                                            <a class="dropdown-item" href="men.html">Jackets</a>
+                                            <a class="dropdown-item" href="men.html">Trousers</a>
+                                        </div> {% endcomment %} 
+                                        
                                         <div class="col-md-4">
+                                            <a class="dropdown-item" href="{% url 'fashion_hub_app:tshirts' %}">T-Shirts</a>
+                                            <a class="dropdown-item" href="men.html">jeans</a>
+                                            <a class="dropdown-item" href="{% url 'fashion_hub_app:shirts' %}">Shirts</a>
+                                            <a class="dropdown-item" href="men.html">Watches</a>
+                                            {% comment %} <a class="dropdown-item" href="men.html">Coats & Jackets</a>
+                                            <a class="dropdown-item" href="men.html">Jackets</a> {% endcomment %}
+                                        </div>
+                                        {% comment %} <div class="col-md-4">
                                             <a class="dropdown-item" href="men.html">T-Shirts</a>
                                             <a class="dropdown-item" href="men.html">Coats</a>
                                             <a class="dropdown-item" href="men.html">Shirts</a>
                                             <a class="dropdown-item" href="men.html">Suits & Blazers</a>
                                             <a class="dropdown-item" href="men.html">Jackets</a>
                                             <a class="dropdown-item" href="men.html">Trousers</a>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <a class="dropdown-item" href="men.html">T-Shirts</a>
-                                            <a class="dropdown-item" href="men.html">Trousers</a>
-                                            <a class="dropdown-item" href="men.html">Shirts</a>
-                                            <a class="dropdown-item" href="men.html">Suits & Blazers</a>
-                                            <a class="dropdown-item" href="men.html">Coats & Jackets</a>
-                                            <a class="dropdown-item" href="men.html">Jackets</a>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <a class="dropdown-item" href="men.html">T-Shirts</a>
-                                            <a class="dropdown-item" href="men.html">Coats</a>
-                                            <a class="dropdown-item" href="men.html">Shirts</a>
-                                            <a class="dropdown-item" href="men.html">Suits & Blazers</a>
-                                            <a class="dropdown-item" href="men.html">Jackets</a>
-                                            <a class="dropdown-item" href="men.html">Trousers</a>
-                                        </div>
+                                        </div> {% endcomment %}
                                     </div>
                                 </div>
                             </div>
@@ -675,7 +650,8 @@ RIGHT SIDEBAR TOGGLE SECTION
             <!-- Content Panel -->
             <div id="clothing-nav-content" class="tab-content py-sm-5">
                 <div role="tabpanel" class="tab-pane fade show active" id="women" aria-labelledby="women-tab">
-                    <div id="owl-demo" class="owl-carousel text-center">
+                    <div id="owl-demo" class="owl-carousel text-center owl-loaded owl-drag">
+                    
                         <div class="item">
                             <!-- card -->
                             <div class="card product-men p-3">
@@ -738,7 +714,7 @@ RIGHT SIDEBAR TOGGLE SECTION
                                         <input type="hidden" name="hub_item" value="Embroidered Women's Tunic">
                                         <input type="hidden" name="amount" value="24.99">
                                         <button type="submit" class="hub-cart phub-cart btn">
-                                            <i class="fas fa-cart-plus" aria-hidden="true"></i>
+                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                         </button>
                                         <a href="#" data-toggle="modal" data-target="#myModal1"></a>
                                     </form>
@@ -860,7 +836,6 @@ RIGHT SIDEBAR TOGGLE SECTION
                         </div>
                     </div>
                 </div>
-
 
                 <div role="tabpanel" class="tab-pane fade" id="men" aria-labelledby="men-tab">
                     <div id="owl-demo1" class="owl-carousel text-center">
@@ -2046,7 +2021,7 @@ RIGHT SIDEBAR TOGGLE SECTION
     <!-- //footer -->
 	<!---728x90--->
     <!-- sign up Modal -->
-    <div class="modal fade" id="myModal_btn" tabindex="-1" role="dialog" aria-labelledby="myModal_btn" aria-hidden="true">
+    {% comment %} <div class="modal fade" id="myModal_btn" tabindex="-1" role="dialog" aria-labelledby="myModal_btn" aria-hidden="true">
         <div class="agilemodal-dialog modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -2091,7 +2066,7 @@ RIGHT SIDEBAR TOGGLE SECTION
                                 </div>
                             </form>
                             <p class="text-center mt-3">Already a member?
-                                <a href="{% url 'accounts:login' %}">
+                                <a href="#" data-toggle="modal" data-target="#exampleModal1" class="text-dark login_btn">
                                     Login Now</a>
                             </p>
                         </div>
@@ -2099,7 +2074,7 @@ RIGHT SIDEBAR TOGGLE SECTION
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
     <!-- //signup modal -->
     <!-- signin Modal -->
     {% comment %} <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModal1" aria-hidden="true">
@@ -2118,14 +2093,13 @@ RIGHT SIDEBAR TOGGLE SECTION
                         </div>
                         <div class="col-md-6">
                             <form action="#" method="post">
-                            {% csrf_token %}
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Your Name</label>
-                                    <input type="text" class="form-control" placeholder=" " name="username" id="recipient-name" required="">
+                                    <input type="text" class="form-control" placeholder=" " name="Name" id="recipient-name" required="">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Password</label>
-                                    <input type="password" class="form-control" placeholder=" " name="Password1" required="">
+                                    <input type="password" class="form-control" placeholder=" " name="Password" required="">
                                 </div>
                                 <div class="right-w3l">
                                     <input type="submit" class="form-control" value="Login">
@@ -2246,8 +2220,7 @@ RIGHT SIDEBAR TOGGLE SECTION
     </script>
     <!-- //cart-js -->
     <!-- start-smooth-scrolling -->
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>    
-
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>      
     <script src="{% static 'js/move-top.js' %}"></script>
     <script src="{% static 'js/easing.js' %}"></script>
     <script>

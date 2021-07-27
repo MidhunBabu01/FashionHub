@@ -5,7 +5,7 @@ from django.contrib.auth.models import User,auth
 
 
 # Create your views here.
-def index(request):
+def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
@@ -14,10 +14,10 @@ def index(request):
         if password1 == password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request,"username already exist")
-                return redirect("accounts:index")
+                return redirect("accounts:register")
             elif User.objects.filter(email=email).exists():
                 messages.info(request,"email  already registered")
-                return redirect("accounts:index")
+                return redirect("accounts:register")
             else:
                 user = User.objects.create_user(username=username, email=email,
                                         password=password1)
@@ -28,7 +28,7 @@ def index(request):
             return redirect('accounts:index')
         return redirect("accounts:login")
     else:
-         return render(request,"index.html")
+         return render(request,"register.html")
 
 
 
@@ -39,18 +39,17 @@ def login(request):
         user=auth.authenticate(username=username,password=password1)
         if user is not None:
             auth.login(request,user)
-            return redirect("accounts:index")
+            return redirect("fashion_hub_app:index")
         else:
             messages.info(request,"invalid details")
-            return redirect("accounts:index2")
+            return redirect("accounts:login")
     else:
         return render(request,"login.html")        
     
 
 
 
-def index2(request):
-    return render(request,"index2.html")
+
 
 
 

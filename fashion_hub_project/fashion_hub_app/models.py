@@ -1,12 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
-
-# Create your models here.
-class Category(models.Model):
-    name = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250)
-    def __str__(self):
-        return self.name
+from django.urls import reverse
 
 
 class Products(models.Model):
@@ -14,7 +8,6 @@ class Products(models.Model):
     slug = models.SlugField(max_length=250) 
     def __str__(self):
         return self.name
-    category = models.ForeignKey(Category,on_delete=models.CASCADE, default = '1') 
     choices = (
         ('T-Shirts','T-Shirts'),
         ('Shirts','Shirts'),
