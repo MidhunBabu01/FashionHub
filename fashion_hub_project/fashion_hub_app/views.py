@@ -2,6 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 from . models import  Products
 from django.db.models import Q
+from django.core.paginator import InvalidPage,EmptyPage
 
 
 

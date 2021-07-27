@@ -1091,7 +1091,7 @@ span.fa.fa-star {
 }
 
 span.fa.fa-star.yellow-star {
-	color: #34c663;
+	color: goldenrod;
 }
 
 .simpleCart_shelfItem .caption .rating {
@@ -1122,12 +1122,23 @@ ul.rating-single li {
 }
 
 .sp_title {
-	color: #000;
+	color: rgb(19, 172, 26);
 	font-size: 16px;
 	font-weight: 600;
 	text-transform: capitalize;
 	letter-spacing: 1px;
 }
+
+.spp_title {
+	color: rgb(13, 27, 14);
+	font-size: 16px;
+	font-weight: 600;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+}
+
+
+
 
 ul.single_serv a {
 	color: #000;
