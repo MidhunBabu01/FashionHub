@@ -9,7 +9,8 @@ urlpatterns = [
    path('shirts',views.shirts, name='shirts'),
    path('T-shirts',views.tshirts, name='tshirts'),
    path('Searchresult/',views.serach, name='search'),
-   path('details/<slug:products_slug>',views.details, name='details'),
+   path('details/<slug:products_slug>',views.details, name='details')
+ 
    
     
     

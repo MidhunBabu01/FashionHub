@@ -30,6 +30,7 @@ def details(request,products_slug):
 
 
 
+
 def serach(request):
     product=None
     Query = None
