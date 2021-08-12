@@ -20,3 +20,6 @@ class Items(models.Model):
     active = models.BooleanField(default=True)
     def __str__(self):
         return self.prodt
+
+    def total(self):
+        return self.prodt.price*self.quantity

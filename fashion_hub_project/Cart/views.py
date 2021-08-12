@@ -12,9 +12,12 @@ def cart(request,total=0,count=0,cart_items=None):
             total +=(i.prodt.price*i.quantity)
             count += i.quantity
     except ObjectDoesNotExist:
-        pass   
-
+        return redirect("Cart:cart2Details")
     return render(request,"cart.html",{"ct_items":ct_items, "total":total, "count":count})
+
+
+def cart2(request):
+    return render(request,"cart2.html")    
 
 
 
@@ -62,3 +65,20 @@ def delete_button(request,product_id):
     c_items = Items.objects.get(prodt=prod, cart=ct)
     c_items.delete()
     return redirect("Cart:addcart")
+
+
+
+def count(request):
+    item_count = 0
+    if 'admin' in request.path:
+        return {}
+    else:
+        try:
+            ct = CartList.objects.filter(cart_id=c_id(request))
+            cti = Items.objects.all().filter(cart=ct)
+            for c in cti:
+                item_count+=c.quantity
+        except CartList.DoesNotExist:
+            item_count = 0
+        return render({"count":item_count})        
+                

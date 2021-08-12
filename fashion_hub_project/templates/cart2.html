@@ -322,13 +322,13 @@ RIGHT SIDEBAR TOGGLE SECTION
                         <!-- shopping cart -->
                         <div class="cart-mainf">
                             <div class="hubcart hubcart2 cart cart box_1">
-                                {% comment %} <form action="#" method="post"> {% endcomment %}
+                                <form action="#" method="post">
                                     <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="display" value="1">
+                                    <input type="hidden" name="display" value="1"> 
                                     <div class="btn top_hub_cart mt-1"  name="submit" value="" title="Cart">
                                         <a href="{% url "Cart:addcart"  %}"><i class="fas fa-shopping-bag">{{itc}}</i></a>
                                     </div>
-                                {% comment %} </form> {% endcomment %}
+                                </form>
                             </div>
                         </div>
                         <!-- //shopping cart ends here -->
@@ -494,51 +494,9 @@ RIGHT SIDEBAR TOGGLE SECTION
         <div class="container">
             <div class="privacy about">
                 <h5 class="head_agileinfo text-center text-capitalize pb-5">
-                    <span>S</span>hopping Cart</h5>
+                    <span>S</span>hopping Cart is EMPTY!!</h5>
 
                 <!--/tabs-->
-                <div class="shopping-cart">
-
-                  <div class="column-labels">
-                    <label class="product-image">Image</label>
-                    <label class="product-details">Product</label>
-                    <label class="product-price">Price</label>
-                    <label class="product-quantity">Quantity</label>
-                    <label class="product-removal">Remove</label>
-                    <label class="product-line-price">Total</label>
-                  </div>
-                {% for i in ct_items %}
-                  <div class="product">
-                    <div class="product-image">
-                      <a href="{% url 'fashion_hub_app:details' i.prodt.slug %}"><img src="{{i.prodt.img1.url}}"></a>
-                    </div>
-                    <div class="product-details">
-                      <div class="product-title">{{i.prodt.name}}</div>
-                      {% comment %} <p class="product-description">{{i.prodt.desc}}</p> {% endcomment %}
-                    </div>
-                    <div class="product-price">{{i.total}}</div>
-                    <div class="product-quantity">
-                    <h5><a href="{% url 'Cart:cartDetails' i.prodt.id %}"><i class="fa fa-plus" style="font-size:13px;color:blue" ></i></a>{{i.quantity}}<a href="{% url 'Cart:minus' i.prodt.id %}"><i class="fa fa-minus" style="font-size:13px;color:red"></i></h5></a>
-                    
-                    {% comment %} <h1><a href="#"> - </h1></a> {% endcomment %}
-                    </div>
-                    <div class="product-removal">
-                      <a href="{% url 'Cart:del_product' i.prodt.id %}" class="remove-product">
-                        Remove
-                      </a>
-                    </div>
-                    <div class="product-line-price">25.98</div>
-                  </div>
-                {% endfor %} 
-                  <div class="totals">
-                    <div class="totals-item totals-item-total">
-                      <label>Grand Total</label>
-                      <div class="totals-value" id="cart-total">{{total}}</div>
-                    </div>
-                  </div>
-                      
-                      <button class="checkout">Checkout</button>
-
                 </div>
                 <!--//tabs-->
             </div>
@@ -747,7 +705,7 @@ RIGHT SIDEBAR TOGGLE SECTION
                     <div class="container">
                         <ul class="bottom-links-agile">
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="{% url 'fashion_hub_app:index' %}">Home</a>
                             </li>
                             <li>
                                 <a href="about.html">About Us</a>

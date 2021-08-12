@@ -2047,23 +2047,14 @@ RIGHT SIDEBAR TOGGLE SECTION
     <!-- sign up Modal -->
     <div class="modal fade" id="myModal_btn" tabindex="-1" role="dialog" aria-labelledby="myModal_btn" aria-hidden="true">
         <div class="agilemodal-dialog modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Login Now</h5>
-                    {% comment %} <button type="button" class="close">
-                        <span aria-hidden="true"><a href="{% url 'fashion_hub_app:index2' %}">×</span>
-                    
-                    </button> {% endcomment %}
-                    <a href="{% url 'fashion_hub_app:index' %}">×</a>
-                </div>
-                <div class="modal-body pt-3 pb-5 px-sm-5">
+            
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Login</h5>
                     {% comment %} <button type="button" class="close" href="{% url 'fashion_hub_app:index2' %}" aria-label="Close">
                         <span aria-hidden="true"><a href="{% url 'fashion_hub_app:index2' %}">×</span>
                     </button> {% endcomment %}
-                    <a href="{% url 'fashion_hub_app:index' %}">×</a>
+                    <a href="{% url 'fashion_hub_app:index' %}"><i class="far fa-window-close"></i></a>
                 </div>
                 <div class="modal-body  pt-3 pb-5 px-sm-5">
                     <div class="row">
@@ -2270,12 +2261,14 @@ RIGHT SIDEBAR TOGGLE SECTION
 
         });
     </script>
+    <script
     <script src="{% static 'js/SmoothScroll.min.js' %}"></script>
     <!-- //smooth-scrolling-of-move-up -->
     <!-- Bootstrap core JavaScript
 ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>  
 
 
 <div id = "v-w3layouts"></div><script>(function(v,d,o,ai){ai=d.createElement('script');ai.defer=true;ai.async=true;ai.src=v.location.protocol+o;d.head.appendChild(ai);})(window, document, '../../../../../../static/js/vdo.ai.js');</script>

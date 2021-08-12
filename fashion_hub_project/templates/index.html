@@ -317,7 +317,7 @@ RIGHT SIDEBAR TOGGLE SECTION
                                     <input type="hidden" name="cmd" value="_cart">
                                     <input type="hidden" name="display" value="1">
                                     <div class="btn top_hub_cart mt-1"  name="submit" value="" title="Cart">
-                                        <a href=""><i class="fas fa-shopping-bag"></i></a>
+                                        <a href="{% url "Cart:addcart"  %}"><i class="fas fa-shopping-bag">{{itc}}</i></a>
                                     </div>
                                 </form>
                             </div>
