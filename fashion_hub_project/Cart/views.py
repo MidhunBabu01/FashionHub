@@ -17,7 +17,12 @@ def cart(request,total=0,count=0,cart_items=None):
 
 
 def cart2(request):
-    return render(request,"cart2.html")    
+    return render(request,"cart2.html") 
+
+
+
+def checkout(request):
+    return render (request,"checkout.html")   
 
 
 

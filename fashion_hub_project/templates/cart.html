@@ -264,7 +264,7 @@ RIGHT SIDEBAR TOGGLE SECTION
 <!---728x90--->
 
   	 <!-- header -->
-    <header>
+    {% comment %} <header>
         <div class="container">
             <!-- top nav -->
             <nav class="top_nav d-flex pt-3 pb-1">
@@ -323,13 +323,8 @@ RIGHT SIDEBAR TOGGLE SECTION
                         <div class="cart-mainf">
                             <div class="hubcart hubcart2 cart cart box_1">
                                 {% comment %} <form action="#" method="post"> {% endcomment %}
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="display" value="1">
-                                    <div class="btn top_hub_cart mt-1"  name="submit" value="" title="Cart">
-                                        <a href="{% url "Cart:addcart"  %}"><i class="fas fa-shopping-bag">{{itc}}</i></a>
-                                    </div>
-                                {% comment %} </form> {% endcomment %}
-                            </div>
+                              {% comment %} </form> {% endcomment %}
+                            {% comment %} </div>
                         </div>
                         <!-- //shopping cart ends here -->
                     </div>
@@ -469,7 +464,7 @@ RIGHT SIDEBAR TOGGLE SECTION
             <!-- //bottom nav -->
         </div>
         <!-- //header container -->
-    </header>
+    </header> { {% endcomment %}
     <!-- //header -->
 	<!---728x90--->
 	<!-- inner banner -->
@@ -535,10 +530,8 @@ RIGHT SIDEBAR TOGGLE SECTION
                       <label>Grand Total</label>
                       <div class="totals-value" id="cart-total">{{total}}</div>
                     </div>
-                  </div>
-                      
-                      <button class="checkout">Checkout</button>
-
+                  </div>  
+                      <div class="checkout"><a href="{% url 'Cart:checkout' %}">Checkout</div></a>
                 </div>
                 <!--//tabs-->
             </div>
