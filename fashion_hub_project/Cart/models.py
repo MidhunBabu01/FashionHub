@@ -32,16 +32,4 @@ class Items(models.Model):
 
 
 
-class BillingAddress(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-    name = models.CharField(max_length=25)
-    email = models.EmailField()
-    mobile = models.IntegerField()
-    address = models.CharField(max_length=50)
-    city = models.CharField(max_length=20)
-    # sate = models.CharField
-    pin = models.IntegerField()
-    country =  CountryField()
-    def __str__(self):
-        self.user.username 
 
