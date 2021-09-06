@@ -13,7 +13,7 @@ urlpatterns = [
       path('min_product/<int:product_id>/',views.minus_button,name="minus"),
       path('del-product/<int:product_id>/',views.delete_button,name="del_product"),
       path('cartDetails/',views.cart2,name="cart2Details"),
-      path('checkout/',views.checkout,name="checkout")
+      path('checkout/',views.CheckOutView.as_view(),name="checkout")
     
 ]
 

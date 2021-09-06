@@ -80,5 +80,5 @@ def serach(request):
     Query = None
     if "q" in request.GET:
         Query=request.GET.get('q')
-    product=Products.objects.all().filter(Q(name__icontains=Query)|Q(desc__icontains=Query))
+        product=Products.objects.all().filter(Q(name__icontains=Query)|Q(desc__icontains=Query))
     return render(request,"search.html",{"product":product,"query":Query})    

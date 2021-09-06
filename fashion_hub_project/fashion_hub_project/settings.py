@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'fashion_hub_app',
     'accounts',
     'Cart',
+    'django_countries'
+    
 ]
 
 MIDDLEWARE = [

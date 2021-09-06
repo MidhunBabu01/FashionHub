@@ -1,16 +1,24 @@
+import Cart
 from django.shortcuts import render,redirect,get_object_or_404
 from Cart.models import CartList, Items
 from fashion_hub_app.models import *
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.generic import CreateView, View
+from .forms import CheckOutForm
+from django.contrib import messages
+
+
 # Create your views here.
 
 def cart(request,total=0,count=0,cart_items=None):
     try:
-        ct =CartList.objects.get(cart_id=c_id(request))
+        ct = CartList.objects.get(cart_id=c_id(request))
         ct_items = Items.objects.filter(cart=ct,active=True)
         for i in ct_items:
             total +=(i.prodt.price*i.quantity)
             count += i.quantity
+            
+        
     except ObjectDoesNotExist:
         return redirect("Cart:cart2Details")
     return render(request,"cart.html",{"ct_items":ct_items, "total":total, "count":count})
@@ -20,9 +28,23 @@ def cart2(request):
     return render(request,"cart2.html") 
 
 
+class CheckOutView(View):
+    def get(self,*args, **kwargs):
+        form = CheckOutForm
+        context ={
+            'form':form
+        }
+        return render(self.request,"checkout.html",context)
+    def post(self, *args, **kwargs):
+        form = CheckOutForm(self.request.POST or None)
+        print(self.request.POST)
+        if form.is_valid():
+            print("form is valid")
+            return redirect("Cart:checkout")
+        messages.warning(self.request,"Failed Checkout")
+        return redirect("Cart:checkout")    
 
-def checkout(request):
-    return render (request,"checkout.html")   
+
 
 
 
