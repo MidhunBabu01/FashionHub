@@ -28,12 +28,6 @@ class Items(models.Model):
 
 
 
-class Orders(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-    items = models.ManyToManyField(Items)
-    billing_address = models.ForeignKey('BillingAddress',on_delete=models.SET_NULL,blank=True,null=True)
-    def __str__(self):
-        return self.user.username
 
 
 

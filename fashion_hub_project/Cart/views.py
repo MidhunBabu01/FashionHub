@@ -1,4 +1,5 @@
-import Cart
+# from _typeshed import Self
+# import Cart
 from django.shortcuts import render,redirect,get_object_or_404
 from Cart.models import CartList, Items
 from fashion_hub_app.models import *
@@ -6,6 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import CreateView, View
 from .forms import CheckOutForm
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -27,22 +29,6 @@ def cart(request,total=0,count=0,cart_items=None):
 def cart2(request):
     return render(request,"cart2.html") 
 
-
-class CheckOutView(View):
-    def get(self,*args, **kwargs):
-        form = CheckOutForm
-        context ={
-            'form':form
-        }
-        return render(self.request,"checkout.html",context)
-    def post(self, *args, **kwargs):
-        form = CheckOutForm(self.request.POST or None)
-        print(self.request.POST)
-        if form.is_valid():
-            print("form is valid")
-            return redirect("Cart:checkout")
-        messages.warning(self.request,"Failed Checkout")
-        return redirect("Cart:checkout")    
 
 
 
@@ -107,5 +93,9 @@ def count(request):
                 item_count+=c.quantity
         except CartList.DoesNotExist:
             item_count = 0
-        return render({"count":item_count})        
-                
+        return render({"count":item_count})     
+
+
+
+
+
