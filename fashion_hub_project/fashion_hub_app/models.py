@@ -7,7 +7,8 @@ class Products(models.Model):
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250) 
     def __str__(self):
-        return self.name
+        return str(self.name)
+    
     choices = (
         ('Men-T-Shirts','Men-T-Shirts'),
         ('Shirts','Shirts'),
