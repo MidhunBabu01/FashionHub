@@ -1,7 +1,12 @@
 # from _typeshed import Self
 # import Cart
+from django import forms
+from django.http.response import HttpResponse
+from django.http import request
 from django.shortcuts import render,redirect,get_object_or_404
-from Cart.models import CartList, Items
+from django.template.defaultfilters import add
+from django.views.generic.base import TemplateView
+from Cart.models import CartList, Items, Orderz
 from fashion_hub_app.models import *
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import CreateView, View
@@ -18,9 +23,7 @@ def cart(request,total=0,count=0,cart_items=None):
         ct_items = Items.objects.filter(cart=ct,active=True)
         for i in ct_items:
             total +=(i.prodt.price*i.quantity)
-            count += i.quantity
-            
-        
+            count += i.quantity      
     except ObjectDoesNotExist:
         return redirect("Cart:cart2Details")
     return render(request,"cart.html",{"ct_items":ct_items, "total":total, "count":count})
@@ -96,6 +99,32 @@ def count(request):
         return render({"count":item_count})     
 
 
+    
+def checkout(request,total=0,count=0,cart_items=None):
+    try:
+        ct = CartList.objects.get(cart_id=c_id(request))
+        ct_items = Items.objects.filter(cart=ct,active=True)
+        for i in ct_items:
+            total +=(i.prodt.price*i.quantity)
+            count += i.quantity      
+    except ObjectDoesNotExist:
+        return redirect("Cart:cart2Details")
+    form = CheckOutForm()
+    if request.method=='POST':
+        print(request.POST)
+        form = CheckOutForm(request.POST)
+        if form.is_valid():
+            ct_items = Items.objects.filter(cart=ct,active=True)
+            Orderz.objects.filter(cartt=ct_items)
+            form.save()
+            return redirect('Cart:order-successfull')
+        else:
+            return redirect('Cart:checkout')
+    return render(request,"checkout.html",{'ct_items':ct_items,"total":total, "count":count, 'form':form})
 
+    
 
-
+def orderplaced(request):
+    return render(request,"ordersuccess.html")
+        
+    
