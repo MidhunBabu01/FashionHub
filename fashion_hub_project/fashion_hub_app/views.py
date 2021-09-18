@@ -3,6 +3,7 @@ from django.shortcuts import render
 from . models import  Products
 from django.db.models import Q
 from django.core.paginator import InvalidPage,EmptyPage
+from django.db.models import Min,Max
 
 
 
@@ -13,7 +14,12 @@ def index(request):
 
 def shirts(request):
     shirts = Products.objects.filter(subcategory="Shirts")
-    return render(request,'shirts.html',{"shirts":shirts}) 
+    minMaxPrice = Products.objects.aggregate(Min('price'), Max('price'))
+    # minPrice = request.GET['minPrice']
+    # maxPrice = request.GET['maxPrice']
+    # minMaxPrice = Products.objects.filter(price__gte=minPrice)
+    # minMaxPrice = Products.objects.filter(price__lte=maxPrice)
+    return render(request,'shirts.html',{"shirts":shirts, "minMaxPrice":minMaxPrice}) 
 
 def tshirts(request):
     tshirts = Products.objects.filter(subcategory="M-T-Shirts")
